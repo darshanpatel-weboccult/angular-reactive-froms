@@ -1,17 +1,26 @@
-<mat-toolbar color="primary">
-  <h1>
-    <img src="../assets/Images/angular.png" alt="Angular Logo" /> Reactive Forms
-  </h1>
-  <ul>
-    <li>
-      <button mat-button routerLinkActive="active" routerLink="/user-form">
-        User Form
-      </button>
-    </li>
-    <li>
-      <button mat-button routerLinkActive="active" routerLink="/user-list">
-        User List
-      </button>
-    </li>
-  </ul>
-</mat-toolbar>
+<header>
+  <mat-toolbar color="primary">
+    <div class="wrapper">
+      <h1>
+        <img src="../assets/Images/angular.png" alt="Angular Logo" /> Reactive
+        Forms
+      </h1>
+      <ul>
+        <li>
+          <button mat-button routerLinkActive="active" routerLink="/user-form">
+            User Form
+          </button>
+        </li>
+        <li>
+          <button mat-button routerLinkActive="active" routerLink="/user-list">
+            User List
+          </button>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar>
+</header>
+
+<section>
+  <router-outlet></router-outlet>
+</section>
