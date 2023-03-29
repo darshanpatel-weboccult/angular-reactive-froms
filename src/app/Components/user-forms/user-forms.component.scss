@@ -1,0 +1,43 @@
+.container-user-form{
+    display: grid;
+    place-items: center;
+    border: 1px solid red;
+    padding-top: 50px;
+    & > form{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        & > div{
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        mat-form-field{
+            width: min(400px , 100%);
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+.address{
+    form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        & > div{
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        mat-form-field{
+            width: min(400px , 100%);
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
