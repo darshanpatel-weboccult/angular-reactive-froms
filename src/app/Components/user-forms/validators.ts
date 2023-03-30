@@ -30,8 +30,16 @@ export function emailValidator(
 
 export function requiredValidator(field: string): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    if(field === "Gender" && !control.touched){
-        return null;
+    if (field === 'Gender' && !control.touched) {
+      return null;
+    }
+
+    if (field === 'Dob') {
+      if (!control.value) {
+        return { error: 'Birth Date Is Required !' };
+      }
+
+      return null;
     }
     const value = control.value as string;
     if (!value.trim().length) {

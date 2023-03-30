@@ -26,5 +26,9 @@ export class UserFormsComponent {
     }),
   });
 
+
+  dateFilter(date:Date | null):boolean{
+    return  date ? date.getTime() < new Date().getTime() : false;
+  }
     
 }
