@@ -1,6 +1,7 @@
 // import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   UserFormService,
   UserFormValues,
@@ -19,7 +20,7 @@ import {
   styleUrls: ['./user-forms.component.scss'],
 })
 export class UserFormsComponent {
-  constructor(private fb: FormBuilder, private ufService: UserFormService) {
+  constructor(private fb: FormBuilder, private ufService: UserFormService,private snack:MatSnackBar ) {
 
   }
 
@@ -62,5 +63,11 @@ export class UserFormsComponent {
 
     this.ufService.addSubmission(values);
     formDirective.resetForm();
+    this.snack.open("User Data Added", "OK", {
+      duration: 3000,
+      horizontalPosition:'right',
+      verticalPosition:'top',
+      panelClass:['info']
+    })
   }
 }

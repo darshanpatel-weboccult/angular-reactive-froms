@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import {  Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 export interface User {
   role: 'Admin' | 'CSR' | 'Customer';
@@ -11,19 +12,41 @@ export interface User {
 
 @Injectable({
   providedIn: 'root',
+  
 })
 export class AuthService {
   private currentUser: User | null = this.getLoggedInUser();
-  private users: User[] = this.getLocalUsers();
+  private users: User[] = [
+    {
+      role: 'Admin',
+      name: 'Darshan Patel',
+      email: 'dhpatelhhpatel123@gmail.com',
+      password: 'dhp@2608',
+    },
+    {
+      role: 'CSR',
+      name: 'John Doe',
+      email: 'johndoe123@gmail.com',
+      password: 'john@321',
+    },
+    {
+      role: 'Customer',
+      name: 'Jasmine',
+      email: 'jasmine2002@gmail.com',
+      password: 'flower@2002',
+    },
+  ];
   private isLoggedInStream: BehaviorSubject<boolean>;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private snack:MatSnackBar) {
     this.isLoggedInStream = new BehaviorSubject<boolean>(
       this.currentUser !== null
     );
   }
 
   login(email: string, password: string): boolean {
+    console.log(email, password);
+    
     const user: User | undefined = this.users.find(
       (localUser: User) =>
         localUser.email === email && localUser.password === password
@@ -36,6 +59,12 @@ export class AuthService {
     this.currentUser = user;
     sessionStorage.setItem('user', JSON.stringify(user));
     this.isLoggedInStream.next(true);
+    this.snack.open("Welcome Back "+ user.name, 'OK' ,{
+      duration: 3000,
+      horizontalPosition:'right',
+      verticalPosition:'top',
+      panelClass:['success']
+    })
     return true;
   }
 
@@ -43,15 +72,13 @@ export class AuthService {
     sessionStorage.removeItem('user');
     this.currentUser = this.getLoggedInUser();
     this.isLoggedInStream.next(false);
+    this.snack.open("Logout Successful !", 'OK' ,{
+      duration: 3000,
+      horizontalPosition:'right',
+      verticalPosition:'top',
+      panelClass:['success']
+    })
     this.router.navigate(['/auth']);
-  }
-
-  private getLocalUsers(): User[] {
-    const users = localStorage.getItem('Users');
-    if (users) {
-      return JSON.parse(users);
-    }
-    return [];
   }
 
   private getLoggedInUser(): User | null {

@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule} from '@angular/material/core';
 import { MatRadioModule} from '@angular/material/radio';
 import { UserFormService } from 'src/app/Shared/user-form.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -26,7 +27,8 @@ import { UserFormService } from 'src/app/Shared/user-form.service';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
   ],
   exports:[
     UserFormsComponent

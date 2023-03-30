@@ -1,0 +1,21 @@
+.container-auth{
+    display: grid;
+    place-items: center;
+    padding-top: 100px;
+    form{
+        width: 100%;
+    }
+    mat-card{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: min(100%, 300px);
+        margin: auto;
+        mat-card-content{
+            display: flex;
+            gap: 5px;
+            flex-direction: column;
+            
+        }
+    }
+}

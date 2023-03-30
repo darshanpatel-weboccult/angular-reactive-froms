@@ -13,4 +13,8 @@ export class AppComponent {
       this.user = authService.getUser();
     })
   }
+
+  handleLogout(){
+    this.authService.logout();
+  }
 }

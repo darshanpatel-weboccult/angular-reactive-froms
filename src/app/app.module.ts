@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserFormsModule } from './Components/user-forms/user-forms.module';
 import { UserTableModule } from './Components/user-table/user-table.module';
-import { AuthComponent } from './Components/auth/auth.component';
+import { AuthModule } from './Components/auth/auth.module';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -18,10 +20,12 @@ import { AuthComponent } from './Components/auth/auth.component';
     MatToolbarModule,
     MatButtonModule,
     UserFormsModule,
-    UserTableModule
+    UserTableModule,
+    MatSnackBarModule,
+    AuthModule
   ],
   providers: [
-    
+    MatSnackBar
   ],
   bootstrap: [AppComponent],
 })
