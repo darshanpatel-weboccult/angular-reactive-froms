@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserFormsModule } from './Components/user-forms/user-forms.module';
+import { UserTableModule } from './Components/user-table/user-table.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +16,8 @@ import { UserFormsModule } from './Components/user-forms/user-forms.module';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    UserFormsModule
+    UserFormsModule,
+    UserTableModule
   ],
   providers: [
     

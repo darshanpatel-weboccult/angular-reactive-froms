@@ -1,7 +1,17 @@
 // import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import {  emailValidator, nameValidator, phoneValidator, pinValidator, requiredValidator} from './validators';
+import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
+import {
+  UserFormService,
+  UserFormValues,
+} from 'src/app/Shared/user-form.service';
+import {
+  emailValidator,
+  nameValidator,
+  phoneValidator,
+  pinValidator,
+  requiredValidator,
+} from './validators';
 
 @Component({
   selector: 'app-user-forms',
@@ -9,7 +19,11 @@ import {  emailValidator, nameValidator, phoneValidator, pinValidator, requiredV
   styleUrls: ['./user-forms.component.scss'],
 })
 export class UserFormsComponent {
-  constructor(private fb: FormBuilder,) {
+  constructor(private fb: FormBuilder, private ufService: UserFormService) {
+    ufService.getSubmissions().subscribe((submissions:UserFormValues[]) => {
+      console.log(submissions);
+      
+    })
   }
 
   userForm = this.fb.group({
@@ -21,14 +35,35 @@ export class UserFormsComponent {
     address: this.fb.group({
       street: ['', [requiredValidator('Street')]],
       city: ['', [requiredValidator('City')]],
-      state: ['',[requiredValidator('State')] ],
+      state: ['', [requiredValidator('State')]],
       pin: ['', [pinValidator]],
     }),
   });
 
-
-  dateFilter(date:Date | null):boolean{
-    return  date ? date.getTime() < new Date().getTime() : false;
+  dateFilter(date: Date | null): boolean {
+    return date ? date.getTime() < new Date().getTime() : false;
   }
-    
+
+  handleSubmit(formDirective:FormGroupDirective) {
+    if (this.userForm.invalid || !this.userForm.controls) {
+      return;
+    }
+
+    const values: UserFormValues = {
+      name: this.userForm.controls.name.value as string,
+      email: this.userForm.controls.email.value as string,
+      dob: new Date(
+        this.userForm.controls.dob.value as string
+      ).toLocaleDateString(),
+      gender: this.userForm.controls.gender.value as string,
+      phone: this.userForm.controls.phone.value as string,
+      street: this.userForm.controls.address.controls.street.value as string,
+      state: this.userForm.controls.address.controls.state.value as string,
+      city: this.userForm.controls.address.controls.city.value as string,
+      pin: this.userForm.controls.address.controls.pin.value as string,
+    };
+
+    this.ufService.addSubmission(values);
+    formDirective.resetForm();
+  }
 }

@@ -1,7 +1,11 @@
 <section>
   <div class="wrapper">
     <div class="container-user-form">
-      <form [formGroup]="userForm">
+      <form
+        [formGroup]="userForm"
+        (ngSubmit)="handleSubmit(formDirective)"
+        #formDirective="ngForm"
+      >
         <div class="personal">
           <h1>Personal Details</h1>
           <mat-form-field appearance="outline">
@@ -20,27 +24,25 @@
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Date of Birth</mat-label>
+            <mat-datepicker-toggle matSuffix [for]="calendar">
+            </mat-datepicker-toggle>
             <input
               #minmaxInput
               matInput
-              [readonly]="true"
-              [matDatepicker]="minmaxvalidation"
-              placeholder="Pick a date"
+              type="text"
+              readonly
+              [matDatepicker]="calendar"
+              placeholder="Pick a date &rarr;"
               formControlName="dob"
               [matDatepickerFilter]="dateFilter"
             />
-            <mat-datepicker-toggle matSuffix [for]="minmaxvalidation">
-            </mat-datepicker-toggle>
-            <mat-datepicker  #minmaxvalidation></mat-datepicker>
+            <mat-datepicker #calendar></mat-datepicker>
             <mat-error>{{ userForm.controls.dob.getError("error") }}</mat-error>
           </mat-form-field>
           <mat-radio-group formControlName="gender">
             <mat-label>Gender: </mat-label>
             <mat-radio-button value="Male">Male</mat-radio-button>
             <mat-radio-button value="Female">Female</mat-radio-button>
-            <mat-error>{{
-              userForm.controls.gender.getError("error")
-            }}</mat-error>
           </mat-radio-group>
           <mat-form-field appearance="outline">
             <mat-label>Phone No</mat-label>
@@ -48,7 +50,7 @@
               userForm.controls.phone.getError("error")
             }}</mat-error>
 
-            <input matInput type="text" formControlName="phone" />
+            <input matInput type="number" formControlName="phone" />
           </mat-form-field>
           <button
             mat-raised-button
@@ -58,10 +60,13 @@
           >
             Submit
           </button>
+          <span class="hint"
+            >*Fill all Fields Properly To Activate Submit Button</span
+          >
         </div>
         <div class="address">
           <h1>Address</h1>
-          <form [formGroup]="userForm.controls.address">
+          <form [formGroup]="userForm.controls.address" (ngSubmit)="handleSubmit(formDirective)">
             <mat-form-field appearance="outline">
               <mat-label>Street</mat-label>
               <input matInput type="text" formControlName="street" />
@@ -85,7 +90,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Pin</mat-label>
-              <input matInput type="text" formControlName="pin" />
+              <input matInput type="number" formControlName="pin" />
               <mat-error>{{
                 userForm.controls.address.controls.pin.getError("error")
               }}</mat-error>

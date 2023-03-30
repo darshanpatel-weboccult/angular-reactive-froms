@@ -1,7 +1,6 @@
 .container-user-form{
     display: grid;
     place-items: center;
-    border: 1px solid red;
     padding-top: 50px;
     & > form{
         width: 100%;
@@ -12,6 +11,7 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
+            gap: 5px;
             align-items: flex-start;
         }
         mat-form-field{
@@ -20,6 +20,12 @@
             margin: 0;
         }
     }
+    .hint{
+        color: gray;
+        margin-top: 10px;
+        user-select: none;
+    }
+    
 }
 .address{
     form{
