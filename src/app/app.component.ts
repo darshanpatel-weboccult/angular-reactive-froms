@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService, User } from './Shared/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  user:User | null = null;
+  constructor(private authService:AuthService){
+    authService.getIsLoggedInStream().subscribe((isLoggedIn:boolean) => {
+      this.user = authService.getUser();
+    })
+  }
 }

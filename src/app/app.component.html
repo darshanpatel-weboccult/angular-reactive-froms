@@ -1,22 +1,33 @@
 <header>
   <mat-toolbar color="primary">
     <div class="wrapper">
-      <h1>
-        <img src="../assets/Images/angular.png" alt="Angular Logo" /> Reactive
-        Forms
-      </h1>
-      <ul>
-        <li>
-          <button mat-button routerLinkActive="active" routerLink="/user-form">
-            User Form
-          </button>
-        </li>
-        <li>
-          <button mat-button routerLinkActive="active" routerLink="/user-list">
-            User List
-          </button>
-        </li>
-      </ul>
+      <div class="navs">
+        <h1>
+          <img src="../assets/Images/angular.png" alt="Angular Logo" /> Reactive
+          Forms
+        </h1>
+        <ul>
+          <li>
+            <button mat-button routerLinkActive="active" routerLink="/user-form">
+              User Form
+            </button>
+          </li>
+          <li>
+            <button mat-button routerLinkActive="active" routerLink="/user-list">
+              User List
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="account">
+        <button *ngIf="!user" mat-button routerLinkActive="active" routerLink="/auth">
+          Login
+        </button>
+        <ng-container *ngIf="user">
+          <h1>{{user.name}}</h1>
+          <button mat-raised-button color="accent" >Logout</button>
+        </ng-container>
+      </div>
     </div>
   </mat-toolbar>
 </header>

@@ -20,10 +20,7 @@ import {
 })
 export class UserFormsComponent {
   constructor(private fb: FormBuilder, private ufService: UserFormService) {
-    ufService.getSubmissions().subscribe((submissions:UserFormValues[]) => {
-      console.log(submissions);
-      
-    })
+
   }
 
   userForm = this.fb.group({

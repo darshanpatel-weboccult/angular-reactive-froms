@@ -34,7 +34,6 @@ export function requiredValidator(field: string): ValidatorFn {
     
 
     if (field === 'Dob') {
-        console.log(control, 'dob');
         
       if (!control.value) {
         return { error: 'Birth Date Is Required !' };

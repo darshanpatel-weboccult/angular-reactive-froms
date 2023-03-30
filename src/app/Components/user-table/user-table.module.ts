@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserTableComponent } from './user-table.component';
 import {MatTableModule} from '@angular/material/table';
+import { UserTableRoutingModule } from './user-table-routing.module';
 
 
 
@@ -10,8 +11,9 @@ import {MatTableModule} from '@angular/material/table';
     UserTableComponent
   ],
   imports: [
+    UserTableRoutingModule,
     CommonModule,
-    MatTableModule
+    MatTableModule,
   ],
   exports:[
     UserTableComponent

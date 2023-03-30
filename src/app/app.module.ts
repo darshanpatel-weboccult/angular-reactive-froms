@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserFormsModule } from './Components/user-forms/user-forms.module';
 import { UserTableModule } from './Components/user-table/user-table.module';
+import { AuthComponent } from './Components/auth/auth.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AuthComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
