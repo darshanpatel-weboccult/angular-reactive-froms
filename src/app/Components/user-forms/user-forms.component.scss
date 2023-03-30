@@ -1,49 +1,48 @@
-.container-user-form{
-    display: grid;
-    place-items: center;
-    padding-top: 50px;
-    & > form{
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        & > div{
-            width: 100%;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            align-items: flex-start;
-        }
-        mat-form-field{
-            width: min(400px , 100%);
-            padding: 0;
-            margin: 0;
-        }
+.container-user-form {
+  display: grid;
+  place-items: center;
+  padding-top: 50px;
+  & > form {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    & > div {
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: flex-start;
     }
-    .hint{
-        color: gray;
-        margin-top: 10px;
-        user-select: none;
+    mat-form-field {
+      width: min(400px, 100%);
+      padding: 0;
+      margin: 0;
     }
-    
+  }
+  .hint {
+    color: gray;
+    margin-top: 10px;
+    user-select: none;
+  }
 }
-.address{
-    form{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        & > div{
-            width: 100%;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        mat-form-field{
-            width: min(400px , 100%);
-            padding: 0;
-            margin: 0;
-        }
+.address {
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    & > div {
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
+    mat-form-field {
+      width: min(400px, 100%);
+      padding: 0;
+      margin: 0;
+    }
+  }
 }

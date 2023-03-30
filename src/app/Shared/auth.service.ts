@@ -44,6 +44,7 @@ export class AuthService {
     );
   }
 
+  // performs basic login (logged user stored in session storage )
   login(email: string, password: string): boolean {
     console.log(email, password);
     
@@ -68,6 +69,8 @@ export class AuthService {
     return true;
   }
 
+
+  // Removes logged user from session storage
   logout(): void {
     sessionStorage.removeItem('user');
     this.currentUser = this.getLoggedInUser();
@@ -81,6 +84,7 @@ export class AuthService {
     this.router.navigate(['/auth']);
   }
 
+  // Retrieves  user from session storage
   private getLoggedInUser(): User | null {
     const user = sessionStorage.getItem('user');
     if (user) {
@@ -89,9 +93,12 @@ export class AuthService {
     return null;
   }
 
+  // Returns current user
   getUser(): User | null {
     return this.currentUser;
   }
+
+  // returns boolean observable that indicates auth status
   getIsLoggedInStream(): Observable<boolean> {
     return this.isLoggedInStream.asObservable();
   }

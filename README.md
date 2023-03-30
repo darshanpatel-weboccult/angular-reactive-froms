@@ -1,27 +1,71 @@
-# AngularReactiveForms
+# Angular Task: Angular Reactive Forms
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+### Task:
 
-## Development server
+- Add tabs in header for form component and list view.
+- In the first tab add person details form (Form should be built using reactive forms).
+- Add validation in for person details like email, mobile number, name should not be blank, etc.
+- When user save person details add it to local storage to be able to load data on second visit.
+- In the second tab add a material table to list persons details entered.
+- Implement lazy loading for table tab and preloading for form components.
+- Add login/ logout functionality to view data.
+- Store user creds in local storage for 3 users with different roles.
+- From those 3 creds users can login and see tables for entered details.
+- Used auth-guard in angular routing to prevent non authenticated users from access data tables.
+- show popup for not auth users.
+- User bootstrap for UI.
+- Use Subjects and Subscribers for data transfer
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Roles:
 
-## Code scaffolding
+<table>
+    <tr>
+        <th>Role</th>
+        <th>Access</th>
+    </tr>
+    <tr>
+        <td>Customer</td>
+        <td>User Form</td>
+    </tr>
+    <tr>
+        <td>CSR</td>
+        <td>User Table</td>
+    </tr>
+    <tr>
+        <td>Admin</td>
+        <td>User Form & User Table</td>
+    </tr>
+</table>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Credentials:
 
-## Build
+<table>
+    <tr>
+        <th>Role</th>
+        <th>Email</th>
+        <th>Password</th>
+    </tr>
+    <tr>
+        <td>Admin</td>
+        <td>dhpatelhhpatel123@gmail.com</td>
+        <td>dhp@2608</td>
+    </tr>
+    <tr>
+        <td>CSR</td>
+        <td>johndoe123@gmail.com</td>
+        <td>john@321</td>
+    </tr>
+    <tr>
+        <td>Customer</td>
+        <td>jasmine2002@gmail.com</td>
+        <td>flower@2002</td>
+    </tr>
+</table>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Preview:
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![](README_ASSETS/angular-reactive-form-img1.png)
+![](README_ASSETS/angular-reactive-form-img2.png)
+![](README_ASSETS/angular-reactive-form-img3.png)

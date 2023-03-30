@@ -4,7 +4,7 @@ export function nameValidator(
   control: AbstractControl
 ): ValidationErrors | null {
   const value = control.value as string;
-  
+
   if (!value?.length) {
     return { error: 'Name Is Required !' };
   }
@@ -31,10 +31,7 @@ export function emailValidator(
 
 export function requiredValidator(field: string): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    
-
     if (field === 'Dob') {
-        
       if (!control.value) {
         return { error: 'Birth Date Is Required !' };
       }
@@ -65,7 +62,6 @@ export function phoneValidator(
 export function pinValidator(
   control: AbstractControl
 ): ValidationErrors | null {
-  
   const value = (control.value as number)?.toString();
   if (!value?.length) {
     return { error: 'Pin Is Required !' };

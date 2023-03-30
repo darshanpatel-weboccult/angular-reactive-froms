@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     canActivate: [AuthGuard],
-    redirectTo:''
+    redirectTo: '',
   },
   {
     path: 'auth',

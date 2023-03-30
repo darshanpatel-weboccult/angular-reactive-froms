@@ -24,8 +24,8 @@ export class UserTableComponent {
   ];
 
   constructor(private ufService: UserFormService) {
-    ufService.getSubmissions().subscribe((submissions:UserFormValues[]) => {
+    ufService.getSubmissions().subscribe((submissions: UserFormValues[]) => {
       this.data = submissions;
-    } )
+    });
   }
 }

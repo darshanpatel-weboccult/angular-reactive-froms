@@ -4,17 +4,17 @@ import { AuthService, User } from './Shared/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  user:User | null = null;
-  constructor(private authService:AuthService){
-    authService.getIsLoggedInStream().subscribe((isLoggedIn:boolean) => {
+  user: User | null = null;
+  constructor(private authService: AuthService) {
+    authService.getIsLoggedInStream().subscribe((isLoggedIn: boolean) => {
       this.user = authService.getUser();
-    })
+    });
   }
 
-  handleLogout(){
+  handleLogout() {
     this.authService.logout();
   }
 }

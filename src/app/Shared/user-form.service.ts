@@ -20,25 +20,29 @@ export class UserFormService {
   private Submissions: BehaviorSubject<UserFormValues[]>;
 
   constructor() {
-    this.Submissions = new BehaviorSubject<UserFormValues[]>(this.getLocalData());
+    this.Submissions = new BehaviorSubject<UserFormValues[]>(
+      this.getLocalData()
+    );
   }
 
-  addSubmission(newSubmission:UserFormValues):void{
+  addSubmission(newSubmission: UserFormValues): void {
     this.Submissions.next([...this.Submissions.value, newSubmission]);
     this.setLocalData();
   }
 
-  getSubmissions():Observable<UserFormValues[]>{
+  getSubmissions(): Observable<UserFormValues[]> {
     return this.Submissions.asObservable();
   }
 
-  private setLocalData(){
-    localStorage.setItem("formSubmissions", JSON.stringify(this.Submissions.value));
+  private setLocalData() {
+    localStorage.setItem(
+      'formSubmissions',
+      JSON.stringify(this.Submissions.value)
+    );
   }
-  private getLocalData(){
-
-    const submissions = localStorage.getItem("formSubmissions");
-    if(submissions){
+  private getLocalData(): UserFormValues[] {
+    const submissions = localStorage.getItem('formSubmissions');
+    if (submissions) {
       return JSON.parse(submissions);
     }
     return [];

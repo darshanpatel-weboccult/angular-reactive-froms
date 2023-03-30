@@ -8,8 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserFormsModule } from './Components/user-forms/user-forms.module';
 import { UserTableModule } from './Components/user-table/user-table.module';
 import { AuthModule } from './Components/auth/auth.module';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,11 +21,9 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     UserFormsModule,
     UserTableModule,
     MatSnackBarModule,
-    AuthModule
+    AuthModule,
   ],
-  providers: [
-    MatSnackBar
-  ],
+  providers: [MatSnackBar],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

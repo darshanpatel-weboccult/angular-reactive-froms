@@ -1,4 +1,3 @@
-// import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,10 +19,13 @@ import {
   styleUrls: ['./user-forms.component.scss'],
 })
 export class UserFormsComponent {
-  constructor(private fb: FormBuilder, private ufService: UserFormService,private snack:MatSnackBar ) {
+  constructor(
+    private fb: FormBuilder,
+    private ufService: UserFormService,
+    private snack: MatSnackBar
+  ) {}
 
-  }
-
+  // Nested Reactive Form
   userForm = this.fb.group({
     name: ['', [nameValidator]],
     email: ['', [emailValidator]],
@@ -38,11 +40,13 @@ export class UserFormsComponent {
     }),
   });
 
+  // To Disable Future Dates from calendar
   dateFilter(date: Date | null): boolean {
     return date ? date.getTime() < new Date().getTime() : false;
   }
 
-  handleSubmit(formDirective:FormGroupDirective) {
+  // Gathers Form data and passes to addSubmission method of userForm Service
+  handleSubmit(formDirective: FormGroupDirective) {
     if (this.userForm.invalid || !this.userForm.controls) {
       return;
     }
@@ -63,11 +67,11 @@ export class UserFormsComponent {
 
     this.ufService.addSubmission(values);
     formDirective.resetForm();
-    this.snack.open("User Data Added", "OK", {
+    this.snack.open('User Data Added', 'OK', {
       duration: 3000,
-      horizontalPosition:'right',
-      verticalPosition:'top',
-      panelClass:['info']
-    })
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: ['info'],
+    });
   }
 }
